@@ -33,7 +33,11 @@ client.on('message', message => {
     if (!command) return;
 
     if (command.guildOnly && message.channel.type === 'dm') {
-        return message.reply('I can\'t execute that command inside DMs!');
+        return message.reply('Je ne peux pas executer cette commande dans un DM!');
+    }
+
+    if(command.dmOnly && message.channel.type != 'dm') {
+        return message.reply('Je ne peux pas executer cette commande dans un serveur!')
     }
 
     if (command.permissions) {
